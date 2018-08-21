@@ -21,14 +21,12 @@ router.get('/users/:username', (req, res) => {
 });
 
 //get all contacts that match search term
-//may need to change it to includes?
 router.get('/search/:term', (req, res) => {
   const contact = req.params.term;
   return Contact
     .query('where', 'name', 'LIKE', `%${contact}%`)
     .fetchAll()
     .then(contact => {
-      console.log('contact', contact);
       return res.json(contact);
     })
     .catch(err => console.log(err));

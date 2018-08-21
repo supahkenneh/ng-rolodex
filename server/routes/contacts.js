@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Contact = require('../db/models/Contact');
 const User = require('../db/models/User');
 
+//get all contacts for logged in user
 router.get('/users/:username', (req, res) => {
   const username = req.params.username;
   return User
@@ -19,17 +20,21 @@ router.get('/users/:username', (req, res) => {
     .catch(err => console.log(err));
 });
 
+//get all contacts that match search term
+//may need to change it to includes?
 router.get('/search/:term', (req, res) => {
   const contact = req.params.term;
   return Contact
-    .query({ where: { name: contact } })
+    .query('where', 'name', 'LIKE', `%${contact}%`)
     .fetchAll()
     .then(contact => {
+      console.log('contact', contact);
       return res.json(contact);
     })
     .catch(err => console.log(err));
 });
 
+//post a new contact
 router.post('/', (req, res) => {
   let {
     name,
@@ -51,6 +56,7 @@ router.post('/', (req, res) => {
     .catch(err => console.log(err));
 });
 
+//get specific contact
 router.get('/:id', (req, res) => {
   let id = req.params.id;
   return Contact
@@ -62,6 +68,7 @@ router.get('/:id', (req, res) => {
     .catch(err => console.log(err));
 });
 
+//change specific contact
 router.put('/:id', (req, res) => {
   let id = req.params.id;
   let {
@@ -88,5 +95,15 @@ router.put('/:id', (req, res) => {
     })
     .catch(err => console.log(err));
 });
+
+//delete a specific contact
+router.delete('/:id', (req, res) => {
+  let id = req.params.id;
+  return new Contact({ id })
+    .destroy()
+    .then(result => {
+      return res.status(200).json('success')
+    })
+})
 
 module.exports = router;

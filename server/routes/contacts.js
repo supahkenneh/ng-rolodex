@@ -28,6 +28,27 @@ router.get('/search/:term', (req, res) => {
     return res.json(contact);
   })
   .catch(err => console.log(err));
-})
+});
+
+router.post('/', (req, res) => {
+  let {
+    name,
+    address,
+    mobile,
+    work,
+    home,
+    email,
+    twitter,
+    instagram,
+    github,
+    created_by
+  } = req.body;
+  return new Contact ({ name, address, mobile, work, home, email, twitter, instagram, github, created_by })
+  .save()
+  .then(newContact => {
+    return res.json(newContact);
+  })
+  .catch(err => console.log(err));
+});
 
 module.exports = router;

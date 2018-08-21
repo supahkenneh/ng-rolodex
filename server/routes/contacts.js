@@ -3,7 +3,7 @@ const Contact = require('../db/models/Contact');
 const User = require('../db/models/User');
 
 router.get('/:username', (req, res) => {
-  const username = req.params.username
+  const username = req.params.username;
   return User
     .query({ where: { username } })
     .fetchAll()
@@ -15,7 +15,19 @@ router.get('/:username', (req, res) => {
         .then(contacts => {
           return res.json(contacts);
         });
-    });
+    })
+    .catch(err => console.log(err));
 });
+
+router.get('/search/:term', (req, res) => {
+  const contact = req.params.term;
+  return Contact
+  .query({ where: { name: contact }})
+  .fetchAll()
+  .then(contact => {
+    return res.json(contact);
+  })
+  .catch(err => console.log(err));
+})
 
 module.exports = router;

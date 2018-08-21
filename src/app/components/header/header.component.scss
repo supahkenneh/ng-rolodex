@@ -1,0 +1,36 @@
+$mainFont: 'Julius Sans One', Sans-Serif;
+$subFont: 'Monda', Sans-Serif;
+
+.main-header {
+  display: flex;
+  padding: 15px;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #474645;
+}
+
+.app-name {
+  text-decoration: none;
+  justify-self: flex-start;
+  color: white;
+  h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 48px;
+    &:hover { color: darken(black, 10%)}
+  }
+}
+
+.nav_bar {
+  margin-right: 20px;
+  font-family: $subFont;
+  padding: 15px;
+  color: black;
+}
+
+.routes {
+  color: white;
+  margin-right: 20px;
+  text-decoration: none;
+  &:hover { color: darken(black, 10%)}
+}

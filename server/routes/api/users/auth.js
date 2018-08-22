@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const User = require('../db/models/User');
+const User = require('../../../db/models/User')
 const bcrypt = require('bcrypt');
 const saltedRounds = 12;
 
@@ -56,7 +56,13 @@ passport.use(new LocalStrategy(function (username, password, done) {
 }));
 
 /**** REGISTRATION ****/
-router.post(('/register'), (req, res) => {
+
+// router.get('/register', (req, res) => {
+//   console.log('req', req);
+// })
+
+router.post('/register', (req, res) => {
+  console.log('req', req.body);
   let {
     username,
     name,
@@ -76,7 +82,7 @@ router.post(('/register'), (req, res) => {
       })
         .save()
         .then((result) => {
-          res.redirect('/login');
+          res.json(result);
         })
         .catch(err => {
           console.log(err);
@@ -106,3 +112,5 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res) => {
   req.logout();
 });
+
+module.exports = router;

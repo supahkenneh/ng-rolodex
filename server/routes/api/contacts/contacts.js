@@ -3,7 +3,8 @@ const Contact = require('../../../db/models/Contact');
 const User = require('../../../db/models/User');
 
 //get all contacts for logged in user
-router.get('/', (req, res) => {
+router.get('/contacts', (req, res) => {
+  console.log('contacts');
   const id = req.query.user;
   return User
     .query({ where: { id } })

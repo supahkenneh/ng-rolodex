@@ -6,11 +6,13 @@ const app = express();
 const PORT = process.env.port || 3005;
 const bodyParser = require('body-parser');
 
-const routes = require('./routes');
+const routes = require('./routes/index');
 
 app.use(bodyParser.json());
 app.use(express.static('../public'));
+
 app.use('/api', routes);
+
 
 app.use(session({
   store: new Redis(),

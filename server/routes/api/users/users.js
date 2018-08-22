@@ -3,14 +3,15 @@ const User = require('../../../db/models/User');
 
 //get user profile
 router.get('/profile', (req, res) => {
-  const id = req.query.user
-  return User
-    .query({ where: { id } })
-    .fetchAll()
-    .then(user => {
-      return res.json(user);
-    })
-    .catch(err => console.log(err))
+  console.log('get');
+  // const id = req.query.user
+  // return User
+  //   .query({ where: { id } })
+  //   .fetchAll()
+  //   .then(user => {
+  //     return res.json(user);
+  //   })
+  //   .catch(err => console.log(err))
 });
 
 //edit user profile

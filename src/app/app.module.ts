@@ -14,9 +14,12 @@ import { ProfileComponent } from './components/profile/profile.component';
 //components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { RegisterComponent } from './components/register/register.component';
 
 //services
 import { BackendService } from './services/backend.service';
+import { SessionService } from './services/session.service';
+import { AuthService} from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { BackendService } from './services/backend.service';
     HomeComponent,
     ProfileComponent,
     NewContactComponent,
-    ContactsComponent
+    ContactsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -37,11 +41,15 @@ import { BackendService } from './services/backend.service';
         { path: 'profile', component: ProfileComponent },
         { path: 'contacts', component: ContactsComponent },
         { path: 'addcontact', component: NewContactComponent },
-
+        { path: 'register', component: RegisterComponent },
       ]
     )
   ],
-  providers: [BackendService],
+  providers: [
+    BackendService,
+    SessionService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

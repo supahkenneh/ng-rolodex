@@ -7,9 +7,17 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent {
   registerFormData: {
-    username: string
+    username: string,
+    password: string,
+    name: string,
+    email: string,
+    address: string
   } = {
-    username: ''
+    username: '',
+    password: '',
+    name: '',
+    email: '',
+    address: ''
   }
 
   constructor(private auth: AuthService) { }

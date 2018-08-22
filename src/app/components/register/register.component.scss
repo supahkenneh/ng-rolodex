@@ -18,6 +18,9 @@ form {
   max-width: 400px;
   margin: auto;
   font-family: $subFont;
+  label{
+    align-self: flex-start;
+  }
 }
 
 input {

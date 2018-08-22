@@ -1,0 +1,32 @@
+$mainFont: 'Julius Sans One', Sans-Serif;
+$subFont: 'Monda', Sans-Serif;
+
+.auth-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 20px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #474645;
+  div {
+    border: solid 1px black;
+    height: 50px;
+    width: 125px;
+    text-align: center;
+    padding: 10px;
+    font-family: $subFont;
+    &:hover { 
+      background-color: black;
+      color: white;
+    }
+  }
+}
+
+.app-description {
+  display: flex;  
+  width: 100%;    
+  justify-content: center;
+  font-family: $subFont;
+}

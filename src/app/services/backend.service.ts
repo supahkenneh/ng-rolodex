@@ -12,7 +12,6 @@ export class BackendService {
 
 
   getContacts() {
-    console.log('fired');
     const contactUrl = this.url + 'contacts/users/isaac';
     return this.http.get(contactUrl).toPromise()
   }

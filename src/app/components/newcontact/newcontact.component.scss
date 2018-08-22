@@ -1,0 +1,44 @@
+$subFont: 'Monda', Sans-Serif;
+
+.secondary-header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+  h2 {
+    margin: 0;
+    font-size: 30px;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  font-family: $subFont;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  border: 0;
+  margin-top: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-family: $subFont;
+}
+
+button {
+  height: 50px;
+  width: 150px;
+  border: 1px solid black;
+  background-color: transparent;
+  font-size: 16px;
+  margin-top: 5px;
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}

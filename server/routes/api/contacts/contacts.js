@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const Contact = require('../db/models/Contact');
-const User = require('../db/models/User');
+const Contact = require('../../../db/models/Contact');
+const User = require('../../../db/models/User');
 
 //get all contacts for logged in user
-router.get('/users/:username', (req, res) => {
-  const username = req.params.username;
+router.get('/', (req, res) => {
+  const id = req.query.user;
   return User
-    .query({ where: { username } })
+    .query({ where: { id } })
     .fetchAll()
     .then(user => {
       let id = user.models[0].id;
@@ -22,18 +22,24 @@ router.get('/users/:username', (req, res) => {
 
 //get all contacts that match search term
 router.get('/search/:term', (req, res) => {
-  const contact = req.params.term;
+  const search = req.params.term;
+  const id = req.query.user
   return Contact
-    .query('where', 'name', 'LIKE', `%${contact}%`)
+    .query(qb => {
+      qb.where('name', 'like', `%${search}%`)
+      .andWhere('created_by', '=', `${id}`)
+    })
     .fetchAll()
-    .then(contact => {
-      return res.json(contact);
+    .then(result => {
+      console.log('result', result);
+      return res.json(result);
     })
     .catch(err => console.log(err));
 });
 
 //post a new contact
 router.post('/', (req, res) => {
+  console.log('req.body', req.body);
   let {
     name,
     address,

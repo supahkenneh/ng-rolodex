@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const users = require('./users');
-const contacts = require('./contacts');
+const users = require('./api/users/users');
+const contacts = require('./api/contacts/contacts');
 
-router.use('/users', users);
+router.use('/', users);
 router.use('/contacts', contacts);
 
 module.exports = router;

@@ -41,4 +41,11 @@ button {
     background-color: black;
     color: white;
   }
+  &:disabled {
+    color: lightgray;
+  }
+}
+
+span {
+  color: red;
 }

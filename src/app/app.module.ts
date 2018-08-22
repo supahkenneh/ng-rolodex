@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 //modules
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 //pages
 import { HomeComponent } from './components/home/home.component';
@@ -29,6 +30,7 @@ import { BackendService } from './services/backend.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(
       [
         { path: '', component: HomeComponent },

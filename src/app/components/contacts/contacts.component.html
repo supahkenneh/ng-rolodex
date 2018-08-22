@@ -1,0 +1,13 @@
+<h2 class="secondary-header" (onload)="showContacts()">{{user}}'s Contacts:</h2>
+<ul>
+  <li *ngFor="let contact of contacts">
+    <p class="name">{{contact.name}}</p>
+    <p class="details">{{contact.address}}</p>
+    <p class="details">{{contact.mobile}}</p>
+    <p class="details">{{contact.work}}</p>
+    <p class="details">{{contact.home}}</p>
+    <p class="details">{{contact.twitter}}</p>
+    <p class="details">{{contact.instagram}}</p>
+    <p class="details">{{contact.github}}</p>
+  </li>
+</ul>

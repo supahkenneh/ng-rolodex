@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//router module
+//modules
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 //pages
 import { HomeComponent } from './components/home/home.component';
@@ -12,6 +13,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 //components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+
+//services
+import { BackendService } from './services/backend.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,7 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(
       [
         { path: '', component: HomeComponent },
@@ -34,7 +39,7 @@ import { HeaderComponent } from './components/header/header.component';
       ]
     )
   ],
-  providers: [],
+  providers: [BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

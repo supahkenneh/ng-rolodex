@@ -14,7 +14,8 @@ export class NewContactComponent implements OnInit {
     email: string,
     twitter: string,
     instagram: string,
-    github: string
+    github: string,
+    created_by: string
   } = {
       name: '',
       address: '',
@@ -23,7 +24,8 @@ export class NewContactComponent implements OnInit {
       email: '',
       twitter: '',
       instagram: '',
-      github: ''
+      github: '',
+      created_by: ''
     };
 
   nameValid: boolean = false;

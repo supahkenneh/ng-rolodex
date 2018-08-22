@@ -13,7 +13,6 @@ export class BackendService {
 
   getContacts(user) {
     const getUrl = this.url + `contacts?user=${user}`;
-    console.log(getUrl);
     return this.http.get(getUrl).toPromise()
   }
 

@@ -1,0 +1,35 @@
+$subFont: 'Monda', Sans-Serif;
+
+.secondary-header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+  h2 {
+    margin: 0;
+    font-size: 30px;
+  }
+}
+
+ul {
+ margin: 0;
+ padding: 20px;
+ list-style-type: none;
+ li {
+  border-left: 6px solid #2E8C96;
+  height: 30%;
+  width: 40%;
+  margin-bottom: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: $subFont;
+  .name {
+    margin: 0;
+    font-size: 18px;
+    border-bottom: 1px solid #2E8C96;
+    padding: 10px;
+  }
+  .details {
+    font-size: 14px;
+  }
+ }
+}

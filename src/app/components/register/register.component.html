@@ -1,23 +1,24 @@
 <div class="secondary-header">
   <h2>Register</h2>
 </div>
-<div class="register-container">
-  <form>
-    <label for="username">Username:</label>
-    <input type="text" name="username" 
-    [(ngModel)]="registerFormData.username" >
-    <label for="password">Password:</label>
-    <input type="password" name="password"
-    [(ngModel)]="registerFormData.password">
+<form>
+  <div class="register-container">
+    <label for="username">Username:
+      <span>{{ getUsernameErrors() }}</span>
+    </label>
+    <input type="text" name="username" [(ngModel)]="registerFormData.username" (keyup)="validateUsername()">
+    <label for="password">Password:
+      <span>{{ getPasswordErrors() }}</span>
+    </label>
+    <input type="password" name="password" [(ngModel)]="registerFormData.password" (keyup)="validatePassword()">
     <label for="name">Name:</label>
-    <input type="text" name="name"
-    [(ngModel)]="registerFormData.name">
-    <label for="email">Email:</label>
-    <input type="text" name="email"
-    [(ngModel)]="registerFormData.email">
+    <input type="text" name="name" [(ngModel)]="registerFormData.name">
+    <label for="email">Email:
+      <span>{{ getEmailErrors() }}</span>
+    </label>
+    <input type="text" name="email" [(ngModel)]="registerFormData.email" (keyup)="validateEmail()">
     <label for="address">Address:</label>
-    <input type="text" name="address"
-    [(ngModel)]="registerFormData.address">
-    <button (click)="register()">Register</button>
-  </form>
-</div>
+    <input type="text" name="address" [(ngModel)]="registerFormData.address">
+  </div>
+  <button (click)="register()" [disabled]="submitDisabled()">Register</button>
+</form>

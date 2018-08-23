@@ -81,13 +81,12 @@ export class RegisterComponent {
   };
 
   register() {
-    console.log(this.registerFormData)
-
-    // return this.auth.register(this.registerFormData)
-    // .then(() => {
-    //   console.log('user registered');
-    // })
-    // .catch(err => console.log('error :', err))
+    console.log('register form', this.registerFormData)
+    return this.auth.register(this.registerFormData)
+    .then((data) => {
+      this.usernameErrors.push(data['message'])
+    })
+    .catch(err => console.log('error :', err))
   }
 
 }

@@ -23,7 +23,7 @@ export class BackendService {
   }
 
   register(data) {
-    console.log('data :', data);
+    console.log('backend data :', data);
     const registerUrl = this.url + 'register';
     return this.http.post(registerUrl, data).toPromise();
   }

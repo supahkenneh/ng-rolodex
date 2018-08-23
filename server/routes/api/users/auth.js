@@ -82,10 +82,10 @@ router.post('/register', (req, res) => {
       })
         .save()
         .then((result) => {
-          res.json(result);
+          res.json(result.attributes.username);
         })
         .catch(err => {
-          console.log(err);
+          res.json({ message: 'username already exists' })
         });
     })
   })

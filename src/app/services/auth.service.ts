@@ -13,6 +13,7 @@ export class AuthService {
   ) { }
 
   register(data) {
+    console.log('data :', data);
     return this.backend.register(data);
   }
 

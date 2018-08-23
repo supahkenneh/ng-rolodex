@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 export class ContactsComponent implements OnInit {
   user: string;
   contacts: any;
-  order: string;
 
   constructor(
     private backend: BackendService,

@@ -5,19 +5,19 @@
   <form>
     <label for="username">Username:</label>
     <input type="text" name="username" 
-    [(ngModel)]="formData.username" >
+    [(ngModel)]="registerFormData.username" >
     <label for="password">Password:</label>
     <input type="password" name="password"
-    [(ngModel)]="formData.password">
+    [(ngModel)]="registerFormData.password">
     <label for="name">Name:</label>
     <input type="text" name="name"
-    [(ngModel)]="formData.name">
+    [(ngModel)]="registerFormData.name">
     <label for="email">Email:</label>
     <input type="text" name="email"
-    [(ngModel)]="formData.email">
+    [(ngModel)]="registerFormData.email">
     <label for="address">Address:</label>
     <input type="text" name="address"
-    [(ngModel)]="formData.address">
-    <button>Register</button>
+    [(ngModel)]="registerFormData.address">
+    <button (click)="register()">Register</button>
   </form>
 </div>

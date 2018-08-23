@@ -23,11 +23,12 @@ export class RegisterComponent {
   constructor(private auth: AuthService) { }
 
   register(){
-    return this.auth.register(this.registerFormData)
-    .then(() => {
-      console.log('user registered');
-    })
-    .catch(err => console.log('error :', err))
+    console.log('hi');
+    // return this.auth.register(this.registerFormData)
+    // .then(() => {
+    //   console.log('user registered');
+    // })
+    // .catch(err => console.log('error :', err))
   }
 
 }

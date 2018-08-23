@@ -16,6 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 //services
 import { BackendService } from './services/backend.service';
@@ -30,7 +31,8 @@ import { AuthService} from './services/auth.service';
     ProfileComponent,
     NewContactComponent,
     ContactsComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import { AuthService} from './services/auth.service';
         { path: 'contacts', component: ContactsComponent },
         { path: 'addcontact', component: NewContactComponent },
         { path: 'register', component: RegisterComponent },
+        { path: 'login', component: LoginComponent },
       ]
     )
   ],

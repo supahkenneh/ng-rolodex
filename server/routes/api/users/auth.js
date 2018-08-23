@@ -35,6 +35,7 @@ passport.deserializeUser((user, done) => {
 
 //localstrategy
 passport.use(new LocalStrategy(function (username, password, done) {
+  console.log('local');
   return new User({ username: username }).fetch()
     .then(user => {
       if (user === null) {
@@ -62,7 +63,6 @@ passport.use(new LocalStrategy(function (username, password, done) {
 // })
 
 router.post('/register', (req, res) => {
-  console.log('req', req.body);
   let {
     username,
     name,
@@ -96,15 +96,13 @@ router.post('/login', (req, res, next) => {
   req.body.username = req.body.username.toLowerCase();
   passport.authenticate('local', (err, user, info) => {
     if (err) {
-      return res.redirect('/login')
-    } else if (!user) {
-      return res.redirect('/login')
-    } else if (req.body.username < 1 || req.body.password.length < 1) {
-      return res.redirect('/login')
+      return res.json({ message: 'username or password invalid' })
     }
     req.login(user, (err) => {
-      if (err) { return next(err); }
-      return res.redirect('/');
+      if (err) { return next(err); } 
+      else {
+        res.json({ username: user.username })
+      }
     });
   })(req, res, next);
 });

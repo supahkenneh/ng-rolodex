@@ -11,9 +11,6 @@ const routes = require('./routes/index');
 app.use(bodyParser.json());
 app.use(express.static('../public'));
 
-app.use('/api', routes);
-
-
 app.use(session({
   store: new Redis(),
   secret: 'keyboard cat',
@@ -23,6 +20,9 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+app.use('/api', routes);
 
 app.listen(PORT, () => {
   process.stdout.write(`Server started on port: ${PORT}\n`)

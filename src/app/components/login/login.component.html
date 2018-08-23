@@ -1,0 +1,16 @@
+<div class="secondary-header">
+  <h2>Login</h2>
+</div>
+<form>
+  <div class="login-container">
+    <label for="username">Username:
+      <span>{{ getUsernameErrors() }}</span>
+    </label>
+    <input type="text" name="username" [(ngModel)]="loginFormData.username">
+    <label for="password">Password:
+      <span>{{ getPasswordErrors() }}</span>
+    </label>
+    <input type="password" name="password" [(ngModel)]="loginFormData.password">
+  </div>
+  <button (click)="login()" [disabled]="submitDisabled()">Login</button>
+</form>

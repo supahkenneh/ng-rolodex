@@ -27,4 +27,9 @@ export class BackendService {
     const registerUrl = this.url + 'register';
     return this.http.post(registerUrl, data).toPromise();
   }
+
+  login(data) {
+    const loginUrl = this.url + 'login';
+    return this.http.post(loginUrl, data).toPromise();
+  }
 }

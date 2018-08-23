@@ -17,12 +17,12 @@ export class AuthService {
     return this.backend.register(data);
   }
 
-  // login(data) {
-  //   return this.backend.login(data)
-  //     .then(response => {
-  //       return this.session.setSession(response['username']);
-  //     });
-  // }
+  login(data) {
+    return this.backend.login(data)
+      .then(response => {
+        return this.session.setSession(response['username']);
+      });
+  }
 
   // logout() {
   //   return this.backend.logout()

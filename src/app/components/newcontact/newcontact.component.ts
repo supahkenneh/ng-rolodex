@@ -73,6 +73,7 @@ export class NewContactComponent {
   };
 
   submitForm() {
+    this.formData.name = this.formData.name.charAt(0).toUpperCase() + this.formData.name.substring(1);
     this.backend.addContact(this.formData)
       .then(response => {
         this.router.navigate(['/contacts'])

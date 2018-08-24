@@ -49,7 +49,7 @@ import { AuthService } from './services/auth.service';
         { path: 'addcontact', component: NewContactComponent },
         { path: 'register', component: RegisterComponent },
         { path: 'login', component: LoginComponent },
-      ], { onSameUrlNavigation: 'reload' }
+      ],
     )
   ],
   providers: [

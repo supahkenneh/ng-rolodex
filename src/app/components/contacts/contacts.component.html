@@ -9,7 +9,9 @@
 </div>
 <div class="contact-container">
   <div class="card" *ngFor="let contact of contacts">
-    <p class="name">{{contact.name}}</p>
+    <div class="name-container">
+      <p class="name" id="{{contact.id}}">{{contact.name}}</p>
+    </div>
     <p class="details">Address:
       <span>{{contact.address}}</span>
     </p>
@@ -31,17 +33,7 @@
     <p class="details">Github:
       <span>{{contact.github}}</span>
     </p>
+    <button (click)="goToEdit($event, contact.name)">Edit</button>
+    <button (click)="deleteContact(contact.id)">Delete</button>
   </div>
 </div>
-<!-- <ul>
-  <li *ngFor="let contact of contacts">
-    <p class="name">{{contact.name}}</p>
-    <p class="details">Address: {{contact.address}}</p>
-    <p class="details">Mobile: {{contact.mobile}}</p>
-    <p class="details">Work: {{contact.work}}</p>
-    <p class="details">Home: {{contact.home}}</p>
-    <p class="details">Twitter: {{contact.twitter}}</p>
-    <p class="details">Instagram: {{contact.instagram}}</p>
-    <p class="details">Github: {{contact.github}}</p>
-  </li>
-</ul> -->

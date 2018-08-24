@@ -41,8 +41,13 @@ export class BackendService {
     return this.http.get(profileUrl).toPromise();
   }
 
-  editProfile(data){
+  editProfile(data) {
     const editUrl = this.url + 'users';
     return this.http.put(editUrl, data).toPromise();
+  }
+
+  deleteContact(id) {
+    const deleteUrl = this.url + `contacts/${id}`
+    return this.http.delete(deleteUrl).toPromise();
   }
 }

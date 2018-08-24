@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { NewContactComponent } from './components/newcontact/newcontact.component';
 import { ProfileComponent } from './components/profile/profile.component';
+// import { ContactPageComponent } from './components/contactpage/contactpage.component';
 
 //components
 import { AppComponent } from './app.component';
@@ -21,7 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 //services
 import { BackendService } from './services/backend.service';
 import { SessionService } from './services/session.service';
-import { AuthService} from './services/auth.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthService} from './services/auth.service';
     NewContactComponent,
     ContactsComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    // ContactPageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ import { AuthService} from './services/auth.service';
         { path: 'addcontact', component: NewContactComponent },
         { path: 'register', component: RegisterComponent },
         { path: 'login', component: LoginComponent },
-      ]
+      ], { onSameUrlNavigation: 'reload' }
     )
   ],
   providers: [

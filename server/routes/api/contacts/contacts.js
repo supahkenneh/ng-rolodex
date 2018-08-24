@@ -100,14 +100,14 @@ router.post('/', (req, res) => {
 //     .catch(err => console.log(err));
 // });
 
-// //delete a specific contact
-// router.delete('/:id', (req, res) => {
-//   let id = req.params.id;
-//   return new Contact({ id })
-//     .destroy()
-//     .then(result => {
-//       return res.status(200).json('success')
-//     })
-// })
+//delete a specific contact
+router.delete('/:id', (req, res) => {
+  let id = req.params.id;
+  return new Contact({ id })
+    .destroy()
+    .then(result => {
+      return res.status(200).json('success')
+    })
+})
 
 module.exports = router;

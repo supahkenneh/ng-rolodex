@@ -24,12 +24,17 @@ $subFont: 'Monda', Sans-Serif;
   border-left: 6px solid #2E8C96;
   padding: 10px;
   margin-bottom: 50px;
+  .name-container{
+    width: 50%;
+    border-bottom: 1px solid #2E8C96;
   .name {
     margin: 0;
+    text-decoration: none;
+    color: black;
     font-size: 18px;
-    border-bottom: 1px solid #2E8C96;
+    }
   }
-  .details {
+  p {
     font-size: 14px;
   }
 }
@@ -39,4 +44,18 @@ $subFont: 'Monda', Sans-Serif;
   font-size: 24px;
   width: 100%;
   text-align: center;
+}
+
+button {
+  height: 30px;
+  width: 70px;
+  font-family: $subFont;
+  border: 1px solid black;
+  background: transparent;
+  font-size: 14px;
+  margin: 5px;
+  &:hover{
+    background: black;
+    color: white;
+  }
 }

@@ -10,7 +10,7 @@
 <div class="contact-container">
   <div class="card" *ngFor="let contact of contacts">
     <div class="name-container">
-      <p class="name" id="{{contact.id}}">{{contact.name}}</p>
+      <p class="name" id="{{contact.id}}" routerLink="/contacts/{{contact.id}}">{{contact.name}}</p>
     </div>
     <p class="details">Address:
       <span>{{contact.address}}</span>
@@ -33,7 +33,6 @@
     <p class="details">Github:
       <span>{{contact.github}}</span>
     </p>
-    <button (click)="goToEdit($event, contact.name)">Edit</button>
     <button (click)="deleteContact(contact.id)">Delete</button>
   </div>
 </div>

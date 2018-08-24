@@ -61,44 +61,51 @@ router.post('/', (req, res) => {
 });
 
 //get specific contact
-// router.get('/:id', (req, res) => {
-//   let id = req.params.id;
-//   return Contact
-//     .query({ where: { id } })
-//     .fetchAll()
-//     .then(contact => {
-//       res.json(contact);
-//     })
-//     .catch(err => console.log(err));
-// });
+router.get('/:id', (req, res) => {
+  let id = req.params.id;
+  return Contact
+    .query({ where: { id } })
+    .fetchAll()
+    .then(contact => {
+      res.json(contact);
+    })
+    .catch(err => console.log(err));
+});
 
 //change specific contact
-// router.put('/:id', (req, res) => {
-//   let id = req.params.id;
-//   let {
-//     name,
-//     address,
-//     mobile,
-//     work,
-//     home,
-//     email,
-//     twitter,
-//     instagram,
-//     github,
-//     created_by
-//   } = req.body;
-//   return Contact
-//     .query({ where: { id } })
-//     .fetchAll()
-//     .then(contact => {
-//       return new Contact({ id })
-//         .save({ name, address, mobile, work, home, email, twitter, instagram, github, created_by })
-//         .then(contact => {
-//           return res.json(contact);
-//         })
-//     })
-//     .catch(err => console.log(err));
-// });
+router.put('/:id', (req, res) => {
+  let id = req.params.id;
+  let {
+    name,
+    address,
+    mobile,
+    work,
+    home,
+    email,
+    twitter,
+    instagram,
+    github,
+    created_by
+  } = req.body;
+  let username = req.body.created_by;
+  return User
+    .query({ where: { username } })
+    .fetch()
+    .then(user => {
+      created_by = user.attributes.id;
+      return Contact
+        .query({ where: { id } })
+        .fetchAll()
+        .then(contact => {
+          return new Contact({ id })
+            .save({ name, address, mobile, work, home, email, twitter, instagram, github, created_by })
+            .then(editedContact => {
+              return res.json(editedContact);
+            })
+        })
+    })
+    .catch(err => console.log(err));
+});
 
 //delete a specific contact
 router.delete('/:id', (req, res) => {

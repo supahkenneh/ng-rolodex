@@ -50,4 +50,14 @@ export class BackendService {
     const deleteUrl = this.url + `contacts/${id}`
     return this.http.delete(deleteUrl).toPromise();
   }
+
+  getOneContact(id) {
+    const contactUrl = this.url + `contacts/${id}`
+    return this.http.get(contactUrl).toPromise();
+  }
+
+  submitContactEdit(data, id) {
+    const editContactUrl = this.url + `contacts/${id}`
+    return this.http.put(editContactUrl, data).toPromise();
+  }
 }

@@ -1,0 +1,95 @@
+<!-- If user is not logged in -->
+<div class="error" *ngIf="!this.isLoggedIn">Please
+  <a routerLink="/">log in</a>
+  to view a contact
+</div>
+<!-- Happy path -->
+<div class="secondary-header">
+  <h2>{{contact.name}}</h2>
+</div>
+<!-- If profile isn't being edited -->
+<div class="contact-profile" *ngIf="!this.editing">
+  <div class="contact-labels">
+    <label>
+      Name:
+      <p>{{contact.name}}</p>
+    </label>
+  </div>
+  <div class="contact-labels">
+    <label>
+      Address:
+      <p>{{contact.address}}</p>
+    </label>
+  </div>
+  <div class="contact-labels">
+    <label>
+      Mobile:
+      <p>{{contact.mobile}}</p>
+    </label>
+  </div>
+  <div class="contact-labels">
+    <label>
+      Work:
+      <p>{{contact.work}}</p>
+    </label>
+  </div>
+  <div class="contact-labels">
+    <label>
+      Home:
+      <p>{{contact.home}}</p>
+    </label>
+  </div>
+  <div class="contact-labels">
+    <label>
+      Email:
+      <p>{{contact.email}}</p>
+    </label>
+  </div>
+  <div class="contact-labels">
+    <label>
+      Twitter:
+      <p>{{contact.twitter}}</p>
+    </label>
+  </div>
+  <div class="contact-labels">
+    <label>
+      Instagram:
+      <p>{{contact.instagram}}</p>
+    </label>
+  </div>
+  <div class="contact-labels">
+    <label>
+      Github:
+      <p>{{contact.github}}</p>
+    </label>
+  </div>
+  <button (click)="toggleEdit()">Edit</button>
+</div>
+
+<!-- Editing body -->
+<div class="edit-container" *ngIf="this.editing">
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" name="name" [(ngModel)]="editFormData.name">
+    <label for="address">Address:</label>
+    <input type="text" name="address" [(ngModel)]="editFormData.address">
+    <label for="mobile">Mobile;</label>
+    <input type="text" name="mobile" [(ngModel)]="editFormData.mobile">
+    <label for="work">Work:</label>
+    <input type="text" name="work" [(ngModel)]="editFormData.work">
+    <label for="home">Home:</label>
+    <input type="text" name="home" [(ngModel)]="editFormData.home">
+    <label for="email">Email:</label>
+    <input type="text" name="email" [(ngModel)]="editFormData.email">
+    <label for="twitter">Twitter:</label>
+    <input type="text" name="twitter" [(ngModel)]="editFormData.twitter">
+    <label for="instagram">Instagram:</label>
+    <input type="text" name="instagram" [(ngModel)]="editFormData.instagram">
+    <label for="github">Github:</label>
+    <input type="text" name="github" [(ngModel)]="editFormData.github">
+    <div class="buttons">
+      <button (click)="submitContactEdit()">Submit</button>
+      <button (click)="toggleEdit()">Cancel</button>
+    </div>
+  </form>
+</div>

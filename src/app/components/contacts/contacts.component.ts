@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 export class ContactsComponent implements OnInit {
   contacts: any;
   isLoggedIn: boolean;
-  editing: boolean = false;
 
   constructor(
     private backend: BackendService,
@@ -27,10 +26,9 @@ export class ContactsComponent implements OnInit {
       })
   }
 
-  goToEdit(event, name) {
-    console.log('event :', event);
-    console.log('name :', name);
-  }
+  // goToContact(id) {
+  //   this.backend.getOneContact(id)
+  // }
 
   deleteContact(id) {
     return this.backend.deleteContact(id)

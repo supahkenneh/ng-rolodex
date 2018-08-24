@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
     return this.backend.editProfile(this.editFormData)
     .then((editedUser) => {
       this.userProfile = editedUser;
-      this.toggleEdit()
+      this.toggleEdit();
     })
   }
 }

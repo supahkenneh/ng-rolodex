@@ -43,4 +43,9 @@ export class BackendService {
     const profileUrl = this.url + 'profile';
     return this.http.get(profileUrl).toPromise();
   }
+
+  editProfile(data){
+    const editUrl = this.url + 'users';
+    return this.http.put(editUrl, data).toPromise();
+  }
 }

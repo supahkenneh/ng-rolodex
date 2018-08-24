@@ -20,15 +20,16 @@ router.get('/profile', (req, res) => {
 });
 
 //edit user profile
-router.put('/users/:id', (req, res) => {
-  const id = req.params.id;
+router.put('/users', (req, res) => {
+  let username = req.user.username
   let {
     name,
     email,
     address
   } = req.body
-  return new User({ id })
-    .save({ name, email, address })
+  return User
+    .where({ username })
+    .save({ name, email, address }, { patch: true })
     .then(user => {
       return res.json(user);
     })

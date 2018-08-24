@@ -7,7 +7,7 @@
 <!-- Happy path -->
 <div class="content-body" *ngIf="this.loggedIn">
   <div class="secondary-header" *ngIf="!this.editing">
-    <h2>{{this.userProfile.username}}'s profile</h2>
+    <h2>{{this.user.username}}'s profile</h2>
   </div>
 
   <!-- Displays if editing toggle is turned off -->
@@ -36,7 +36,7 @@
   <!-- Editing body -->
   <div class="edit-container" *ngIf="this.editing">
     <div class="secondary-header">
-      <h2>Editing {{this.userProfile.username}}'s Profile</h2>
+      <h2>Editing {{this.user.username}}'s Profile</h2>
     </div>
     <form>
       <label for="name">Name:</label>

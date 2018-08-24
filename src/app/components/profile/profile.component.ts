@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { BackendService } from '../../services/backend.service';
@@ -24,7 +25,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private session: SessionService,
-    private backend: BackendService
+    private backend: BackendService,
+    private router: Router
   ) {
     this.user = this.session.getSession();
     this.loggedIn = this.session.isLoggedIn();
@@ -48,5 +50,10 @@ export class ProfileComponent implements OnInit {
   }
 
   submitEdit() {
+    return this.backend.editProfile(this.editFormData)
+    .then((editedUser) => {
+      this.userProfile = editedUser;
+      this.toggleEdit()
+    })
   }
 }

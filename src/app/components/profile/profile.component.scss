@@ -1,0 +1,33 @@
+$subFont: 'Monda', Sans-Serif;
+
+.secondary-header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+  h2 {
+    margin: 0;
+    font-size: 30px;
+  }
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-top: 15px;
+  font-family: $subFont;
+  label {
+    font-size: 20px;
+    p {
+      font-size: 16px;
+      margin-left: 40px;
+    }
+  }
+}
+
+.error {
+  font-family: $subFont;
+  font-size: 24px;
+  width: 100%;
+  text-align: center;
+}

@@ -19,10 +19,8 @@ export class HeaderComponent {
   }
 
   logout() {
-    console.log('click');
     return this.auth.logout()
     .then(() => {
-      console.log('yoyo');
       return this.router.navigate(['/'])
     })
   }

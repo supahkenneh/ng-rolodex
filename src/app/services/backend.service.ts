@@ -36,6 +36,11 @@ export class BackendService {
   logout() {
     const logoutUrl = this.url + 'logout';
     console.log('logoutUrl :', logoutUrl);
-    return this.http.get(logoutUrl).toPromise()
+    return this.http.get(logoutUrl).toPromise();
+  }
+
+  getProfile() {
+    const profileUrl = this.url + 'profile';
+    return this.http.get(profileUrl).toPromise();
   }
 }

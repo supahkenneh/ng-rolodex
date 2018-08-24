@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './register.component.html',
@@ -27,7 +28,10 @@ export class RegisterComponent {
   emailErrors: string[] = [];
   passwordErrors: string[] = [];
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) { }
 
   validateUsername() {
     this.usernameErrors.length = 0;
@@ -81,10 +85,12 @@ export class RegisterComponent {
   };
 
   register() {
-    console.log('register form', this.registerFormData)
     return this.auth.register(this.registerFormData)
     .then((data) => {
       this.usernameErrors.push(data['message'])
+    })
+    .then(() => {
+      this.router.navigate(['/login'])
     })
     .catch(err => console.log('error :', err))
   }

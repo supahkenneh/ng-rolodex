@@ -1,1 +1,30 @@
-<p>profile</p>
+<div class="content-body" *ngIf="this.loggedIn">
+  <div class="secondary-header">
+    <h2>{{this.userProfile.username}}'s profile</h2>
+  </div>
+  <div class="profile-container">
+    <div class="user-labels">
+      <label>
+        Name:
+        <p>{{this.userProfile.name}}</p>
+      </label>
+    </div>
+    <div class="user-labels">
+      <label>
+        Email:
+        <p>{{this.userProfile.email}}</p>
+      </label>
+    </div>
+    <div class="user-labels">
+      <label>
+        Address:
+        <p>{{this.userProfile.address}}</p>
+      </label>
+    </div>
+  </div>
+</div>
+<div class="error" *ngIf="!this.loggedIn">
+  <p>
+    Please <a href="http://localhost:4200/login">log in</a> to view your profile
+  </p>
+</div>

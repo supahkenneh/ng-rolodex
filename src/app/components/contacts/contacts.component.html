@@ -7,15 +7,41 @@
 <div class="secondary-header" *ngIf="this.isLoggedIn">
   <h2 (onload)="showContacts()">Your Contacts:</h2>
 </div>
-<ul>
+<div class="contact-container">
+  <div class="card" *ngFor="let contact of contacts">
+    <p class="name">{{contact.name}}</p>
+    <p class="details">Address:
+      <span>{{contact.address}}</span>
+    </p>
+    <p class="details">Mobile:
+      <span>{{contact.mobile}}</span>
+    </p>
+    <p class="details">Work:
+      <span>{{contact.work}}</span>
+    </p>
+    <p class="details">Home:
+      <span>{{contact.home}}</span>
+    </p>
+    <p class="details">Twitter:
+      <span>{{contact.twitter}}</span>
+    </p>
+    <p class="details">Instagram:
+      <span>{{contact.instagram}}</span>
+    </p>
+    <p class="details">Github:
+      <span>{{contact.github}}</span>
+    </p>
+  </div>
+</div>
+<!-- <ul>
   <li *ngFor="let contact of contacts">
     <p class="name">{{contact.name}}</p>
-    <p class="details">{{contact.address}}</p>
-    <p class="details">{{contact.mobile}}</p>
-    <p class="details">{{contact.work}}</p>
-    <p class="details">{{contact.home}}</p>
-    <p class="details">{{contact.twitter}}</p>
-    <p class="details">{{contact.instagram}}</p>
-    <p class="details">{{contact.github}}</p>
+    <p class="details">Address: {{contact.address}}</p>
+    <p class="details">Mobile: {{contact.mobile}}</p>
+    <p class="details">Work: {{contact.work}}</p>
+    <p class="details">Home: {{contact.home}}</p>
+    <p class="details">Twitter: {{contact.twitter}}</p>
+    <p class="details">Instagram: {{contact.instagram}}</p>
+    <p class="details">Github: {{contact.github}}</p>
   </li>
-</ul>
+</ul> -->

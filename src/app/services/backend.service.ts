@@ -11,19 +11,17 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
 
-  getContacts(user) {
-    const getUrl = this.url + `contacts?user=${user}`;
+  getContacts() {
+    const getUrl = this.url + 'contacts';
     return this.http.get(getUrl).toPromise()
   }
 
-  submit(data) {
-    console.log('data', data);
+  addContact(data) {
     const postUrl = this.url + 'contacts';
     return this.http.post(postUrl, data).toPromise()
   }
 
   register(data) {
-    console.log('backend data :', data);
     const registerUrl = this.url + 'register';
     return this.http.post(registerUrl, data).toPromise();
   }
@@ -35,7 +33,6 @@ export class BackendService {
 
   logout() {
     const logoutUrl = this.url + 'logout';
-    console.log('logoutUrl :', logoutUrl);
     return this.http.get(logoutUrl).toPromise();
   }
 

@@ -1,28 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
-import { ActivatedRoute } from '@angular/router';
+import { SessionService } from '../../services/session.service';
 @Component({
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent implements OnInit {
-  user: string;
   contacts: any;
+  isLoggedIn: boolean;
 
   constructor(
     private backend: BackendService,
-    private route: ActivatedRoute
+    private session: SessionService
   ) {
-    this.user = '';
     this.contacts = [];
+    this.isLoggedIn = this.session.isLoggedIn();
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.backend.getContacts(params.user)
-      .then(result => {
-        this.contacts = result;
-      })
+    this.backend.getContacts()
+    .then(contacts => {
+      this.contacts = contacts;
     })
   }
 

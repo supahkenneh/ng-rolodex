@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
+import { SessionService } from '../../services/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './newcontact.component.html',
   styleUrls: ['./newcontact.component.scss']
 })
-export class NewContactComponent implements OnInit {
+export class NewContactComponent {
   formData: {
     name: string,
     address: string,
@@ -14,8 +16,7 @@ export class NewContactComponent implements OnInit {
     email: string,
     twitter: string,
     instagram: string,
-    github: string,
-    created_by: string
+    github: string
   } = {
       name: '',
       address: '',
@@ -24,8 +25,7 @@ export class NewContactComponent implements OnInit {
       email: '',
       twitter: '',
       instagram: '',
-      github: '',
-      created_by: ''
+      github: ''
     };
 
   nameValid: boolean = false;
@@ -33,10 +33,10 @@ export class NewContactComponent implements OnInit {
   nameErrors: string[] = [];
   emailErrors: string[] = [];
 
-  constructor(private backend: BackendService) { }
-
-  ngOnInit() {
-  }
+  constructor(
+    private backend: BackendService,
+    private router: Router 
+  ) { }
 
   validateName() {
     this.nameErrors.length = 0;
@@ -61,12 +61,10 @@ export class NewContactComponent implements OnInit {
   }
 
   getNameErrors() {
-    console.log('name' ,this.nameErrors)
     return this.nameErrors.join(', ');
   };
 
   getEmailErrors() {
-    console.log('email',this.emailErrors)
     return this.emailErrors.join(', ');
   }
 
@@ -75,9 +73,9 @@ export class NewContactComponent implements OnInit {
   };
 
   submitForm() {
-    this.backend.submit(this.formData)
+    this.backend.addContact(this.formData)
       .then(response => {
-        console.log('new contact', response);
+        this.router.navigate(['/contacts'])
       })
   }
 }

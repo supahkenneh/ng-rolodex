@@ -1,15 +1,21 @@
-<div class="secondary-header">
-    <h2 (onload)="showContacts()">Your Contacts:</h2>
-  </div>
-  <ul>
-    <li *ngFor="let contact of contacts">
-      <p class="name">{{contact.name}}</p>
-      <p class="details">{{contact.address}}</p>
-      <p class="details">{{contact.mobile}}</p>
-      <p class="details">{{contact.work}}</p>
-      <p class="details">{{contact.home}}</p>
-      <p class="details">{{contact.twitter}}</p>
-      <p class="details">{{contact.instagram}}</p>
-      <p class="details">{{contact.github}}</p>
-    </li>
-  </ul>
+<div class="error" *ngIf="!this.isLoggedIn">
+  <p>You must
+    <a href="http://localhost:4200/login">log in </a>
+    to view your contacts
+  </p>
+</div>
+<div class="secondary-header" *ngIf="this.isLoggedIn">
+  <h2 (onload)="showContacts()">Your Contacts:</h2>
+</div>
+<ul>
+  <li *ngFor="let contact of contacts">
+    <p class="name">{{contact.name}}</p>
+    <p class="details">{{contact.address}}</p>
+    <p class="details">{{contact.mobile}}</p>
+    <p class="details">{{contact.work}}</p>
+    <p class="details">{{contact.home}}</p>
+    <p class="details">{{contact.twitter}}</p>
+    <p class="details">{{contact.instagram}}</p>
+    <p class="details">{{contact.github}}</p>
+  </li>
+</ul>

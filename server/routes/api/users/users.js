@@ -31,7 +31,7 @@ router.put('/users', (req, res) => {
     .where({ username })
     .save({ name, email, address }, { patch: true })
     .then(user => {
-      return res.json(user);
+      return res.json(user.attributes);
     })
     .catch(err => console.log(err))
 });

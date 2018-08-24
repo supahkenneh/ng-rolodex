@@ -13,7 +13,6 @@ export class AuthService {
   ) { }
 
   register(data) {
-    console.log('data :', data);
     return this.backend.register(data);
   }
 
@@ -25,7 +24,6 @@ export class AuthService {
   }
 
   logout() {
-    console.log('auth')
     return this.backend.logout()
     .then(response => {
       return this.session.clearSession();

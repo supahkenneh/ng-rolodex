@@ -10,6 +10,7 @@ export class ProfileComponent implements OnInit {
   user: object;
   userProfile: object;
   loggedIn: boolean = false;
+  editing: boolean = false;
 
   constructor(
     private session: SessionService,
@@ -19,13 +20,20 @@ export class ProfileComponent implements OnInit {
     this.loggedIn = this.session.isLoggedIn();
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     if (this.user) {
       this.backend.getProfile()
-      .then(result => {
-        console.log('result:', result);
-        this.userProfile = result;
-      })
+        .then(result => {
+          this.userProfile = result;
+        })
     }
-   }
+  }
+
+  toggleEdit() {
+    if (this.editing) {
+      return this.editing = false;
+    } else {
+      return this.editing = true;
+    }
+  }
 }

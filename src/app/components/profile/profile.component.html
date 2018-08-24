@@ -1,8 +1,17 @@
+<!-- Will display if user tries to access page without logging in -->
+<div class="error" *ngIf="!this.loggedIn">
+  <p>
+    Please <a href="http://localhost:4200/login">log in</a> to view your profile
+  </p>
+</div>
+<!-- Happy path -->
 <div class="content-body" *ngIf="this.loggedIn">
-  <div class="secondary-header">
+  <div class="secondary-header" *ngIf="!this.editing">
     <h2>{{this.userProfile.username}}'s profile</h2>
   </div>
-  <div class="profile-container">
+
+  <!-- Displays if editing toggle is turned off -->
+  <div class="profile-container" *ngIf="!this.editing">
     <div class="user-labels">
       <label>
         Name:
@@ -21,10 +30,25 @@
         <p>{{this.userProfile.address}}</p>
       </label>
     </div>
+    <button (click)="toggleEdit()">Edit</button>
   </div>
-</div>
-<div class="error" *ngIf="!this.loggedIn">
-  <p>
-    Please <a href="http://localhost:4200/login">log in</a> to view your profile
-  </p>
+
+  <!-- Editing body -->
+  <div class="edit-container" *ngIf="this.editing">
+    <div class="secondary-header">
+      <h2>Editing {{this.userProfile.username}}'s Profile</h2>
+    </div>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" name="name">
+      <label for="email">Email:</label>
+      <input type="text" name="email">
+      <label for="address">Address:</label>
+      <input type="text" name="address">
+      <div class="buttons">
+        <button (click)="submitEdit()">Submit</button>
+        <button (click)="toggleEdit()">Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>

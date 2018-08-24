@@ -32,4 +32,10 @@ export class BackendService {
     const loginUrl = this.url + 'login';
     return this.http.post(loginUrl, data).toPromise();
   }
+
+  logout() {
+    const logoutUrl = this.url + 'logout';
+    console.log('logoutUrl :', logoutUrl);
+    return this.http.get(logoutUrl).toPromise()
+  }
 }

@@ -35,7 +35,6 @@ passport.deserializeUser((user, done) => {
 
 //localstrategy
 passport.use(new LocalStrategy(function (username, password, done) {
-  console.log('local');
   return new User({ username: username }).fetch()
     .then(user => {
       if (user === null) {
@@ -57,11 +56,6 @@ passport.use(new LocalStrategy(function (username, password, done) {
 }));
 
 /**** REGISTRATION ****/
-
-// router.get('/register', (req, res) => {
-//   console.log('req', req);
-// })
-
 router.post('/register', (req, res) => {
   let {
     username,
@@ -109,6 +103,7 @@ router.post('/login', (req, res, next) => {
 
 router.get('/logout', (req, res) => {
   req.logout();
+  res.json({ sucess: true })
 });
 
 module.exports = router;

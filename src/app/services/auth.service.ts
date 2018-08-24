@@ -24,10 +24,11 @@ export class AuthService {
       });
   }
 
-  // logout() {
-  //   return this.backend.logout()
-  //   .then(response => {
-  //     return this.session.clearSession();
-  //   });
-  // }
+  logout() {
+    console.log('auth')
+    return this.backend.logout()
+    .then(response => {
+      return this.session.clearSession();
+    });
+  }
 }

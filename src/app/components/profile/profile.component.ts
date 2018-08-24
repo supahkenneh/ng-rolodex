@@ -12,6 +12,16 @@ export class ProfileComponent implements OnInit {
   loggedIn: boolean = false;
   editing: boolean = false;
 
+  editFormData: {
+    name: string;
+    email: string;
+    address: string;
+  } = {
+    name: '',
+    email: '',
+    address: ''
+  }
+
   constructor(
     private session: SessionService,
     private backend: BackendService
@@ -35,5 +45,8 @@ export class ProfileComponent implements OnInit {
     } else {
       return this.editing = true;
     }
+  }
+
+  submitEdit() {
   }
 }

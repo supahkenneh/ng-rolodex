@@ -1,13 +1,13 @@
 <!-- Will display if user tries to access page without logging in -->
-<div class="error" *ngIf="!this.loggedIn">
+<div class="error" *ngIf="!this.isLoggedIn">
     <p>
       Please <a routerLink="/">log in</a> to view your profile
     </p>
   </div>
-<div class="secondary-header" *ngIf="this.loggedIn">
+<div class="secondary-header" *ngIf="this.isLoggedIn">
   <h2>Add a Contact</h2>
 </div>
-<form *ngIf="this.loggedIn">
+<form *ngIf="this.isLoggedIn">
   <div class="input-form">
     <label for="name">Name: </label><span>{{ getNameErrors() }}</span>
     <input type="text" name="name" [(ngModel)]="formData.name" (keyup)="validateName()">

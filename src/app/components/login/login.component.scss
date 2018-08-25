@@ -21,6 +21,10 @@ form {
   label{
     align-self: flex-start;
   }
+  .login-error {
+    color: red;
+    font-size: 12px;
+  }
 }
 
 input {
@@ -51,4 +55,11 @@ button {
 
 span {
   color: red;
+}
+
+.error {
+  font-family: $subFont;
+  font-size: 24px;
+  width: 100%;
+  text-align: center;
 }

@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   templateUrl: './login.component.html',
@@ -12,41 +13,38 @@ export class LoginComponent {
     username: string,
     password: string,
   } = {
-    username: '',
-    password: ''
-  }
+      username: '',
+      password: ''
+    }
 
-  usernameErrors: string[] = [];
-  passwordErrors: string[] = [];
-  submitValid: boolean = false;
+  submitValid: boolean = true;
+  isLoggedIn: boolean;
+  errors: boolean = false;
+  loginError: string;
 
   constructor(
     private auth: AuthService,
-    private router: Router
-  ) { }
-
-  getUsernameErrors() {
-    if (this.usernameErrors.length < 1) {
-      this.submitValid = true;
-    }
-    return this.usernameErrors.join(', ');
-  }
-
-  getPasswordErrors() {
-    if (this.passwordErrors.length < 1) {
-      this.submitValid = true;
-    }
-    return this.passwordErrors.join(', ');
-  }
+    private router: Router,
+    private session: SessionService
+  ) { this.isLoggedIn = this.session.isLoggedIn() }
 
   submitDisabled() {
-    return !(this.submitValid);
-  }  
+    if (this.loginFormData.username.length > 1 && this.loginFormData.password.length > 3) {
+      return this.submitValid = false;
+    } else {
+      return this.submitValid = true;
+    }
+  }
 
   login() {
     return this.auth.login(this.loginFormData)
-    .then(() => {
-      this.router.navigate(['/contacts'])
-    })
+      .then((response) => {
+        if (response) {
+          this.errors = true;
+          return this.loginError = response;
+        } else {
+          return this.router.navigate(['/contacts'])
+        }
+      })
   }
 }

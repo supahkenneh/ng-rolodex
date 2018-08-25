@@ -38,14 +38,14 @@ passport.use(new LocalStrategy(function (username, password, done) {
   return new User({ username: username }).fetch()
     .then(user => {
       if (user === null) {
-        return done(null, false, { message: 'bad username or password' });
+        return done(null, false, { message: 'Invalid username or password' });
       } else {
         user = user.toJSON();
         bcrypt.compare(password, user.password)
           .then(samePassword => {
             if (samePassword) { return done(null, user); }
             else {
-              return done(null, false, { message: 'bad username or password' });
+              return done(null, false, { message: 'Invalid username or password' });
             }
           })
       }
@@ -90,14 +90,17 @@ router.post('/login', (req, res, next) => {
   req.body.username = req.body.username.toLowerCase();
   passport.authenticate('local', (err, user, info) => {
     if (err) {
-      return res.json({ message: 'username or password invalid' })
+      return res.json(info)
+    } else if (!user) {
+      return res.json(info);
+    } else {
+      req.login(user, (err) => {
+        if (err) { return next(err); }
+        else {
+          res.json({ username: user.username })
+        }
+      });
     }
-    req.login(user, (err) => {
-      if (err) { return next(err); } 
-      else {
-        res.json({ username: user.username })
-      }
-    });
   })(req, res, next);
 });
 

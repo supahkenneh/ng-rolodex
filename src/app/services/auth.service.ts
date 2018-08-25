@@ -19,7 +19,11 @@ export class AuthService {
   login(data) {
     return this.backend.login(data)
       .then(response => {
-        return this.session.setSession(response['username']);
+        if (response['message']) {
+          return response['message'];
+        } else {
+          return this.session.setSession(response['username']);
+        }
       });
   }
 

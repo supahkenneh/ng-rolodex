@@ -1,15 +1,15 @@
-<div class="secondary-header">
+<div class="error" *ngIf="isLoggedIn">
+  <p>You are already logged in!</p>
+</div>
+<div class="secondary-header" *ngIf="!isLoggedIn">
   <h2>Login</h2>
 </div>
-<form>
+<form *ngIf="!isLoggedIn">
   <div class="login-container">
-    <label for="username">Username:
-      <span>{{ getUsernameErrors() }}</span>
-    </label>
+    <div class="login-error">{{loginError}}</div>
+    <label for="username">Username:</label>
     <input type="text" name="username" [(ngModel)]="loginFormData.username">
-    <label for="password">Password:
-      <span>{{ getPasswordErrors() }}</span>
-    </label>
+    <label for="password">Password:</label>
     <input type="password" name="password" [(ngModel)]="loginFormData.password">
   </div>
   <button (click)="login()" [disabled]="submitDisabled()">Login</button>

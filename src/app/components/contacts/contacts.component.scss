@@ -32,6 +32,9 @@ $subFont: 'Monda', Sans-Serif;
     text-decoration: none;
     color: black;
     font-size: 18px;
+    &:hover {
+      color: lightgray;
+    }
     }
   }
   p {

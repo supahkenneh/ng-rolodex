@@ -38,6 +38,29 @@ button {
   }
 }
 
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  a {
+    margin-left: 20px;
+    border: 1px solid black;
+    background: transparent;
+    color: black;
+    text-decoration: none;
+    height: 40px;
+    width: 130px;
+    font-size: 16px;
+    margin-top: 5px;
+    text-align: center;
+    padding: 5px;
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+}
+
 .error {
   font-family: $subFont;
   font-size: 24px;

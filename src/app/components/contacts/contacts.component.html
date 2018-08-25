@@ -1,6 +1,6 @@
 <div class="error" *ngIf="!this.isLoggedIn">
   <p>You must
-    <a href="http://localhost:4200/login">log in </a>
+    <a routerLink="/">log in </a>
     to view your contacts
   </p>
 </div>
@@ -10,7 +10,7 @@
 <div class="contact-container">
   <div class="card" *ngFor="let contact of contacts">
     <div class="name-container">
-      <p class="name" id="{{contact.id}}" routerLink="/contacts/{{contact.id}}">{{contact.name}}</p>
+      <a class="name" routerLink="/contacts/{{contact.id}}">{{contact.name}}</a>
     </div>
     <p class="details">Address:
       <span>{{contact.address}}</span>

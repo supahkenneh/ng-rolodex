@@ -22,21 +22,20 @@ router.get('/', (req, res) => {
 });
 
 //get all contacts that match search term
-// router.get('/search/:term', (req, res) => {
-//   const search = req.params.term;
-//   const id = req.query.user
-//   return Contact
-//     .query(qb => {
-//       qb.where('name', 'like', `%${search}%`)
-//         .andWhere('created_by', '=', `${id}`)
-//     })
-//     .fetchAll()
-//     .then(result => {
-//       console.log('result', result);
-//       return res.json(result);
-//     })
-//     .catch(err => console.log(err));
-// });
+router.get('/search/:term', (req, res) => {
+  const search = req.params.term;
+  const id = req.user.id
+  return new Contact()
+    .query(qb => {
+      qb.where({ created_by : id })
+        .andWhereRaw(`LOWER(name) LIKE ?`, [`%${search}%`])
+    })
+    .fetchAll()
+    .then(result => {
+      return res.json(result);
+    })
+    .catch(err => console.log(err));
+});
 
 //post a new contact
 router.post('/', (req, res) => {

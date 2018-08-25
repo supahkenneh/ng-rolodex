@@ -1,11 +1,19 @@
+<!-- Will show when no user is logged in -->
 <div class="error" *ngIf="!this.isLoggedIn">
   <p>You must
     <a routerLink="/">log in </a>
     to view your contacts
   </p>
 </div>
+<!-- All contacts, show in alpha order -->
 <div class="secondary-header" *ngIf="this.isLoggedIn">
   <h2 (onload)="showContacts()">Your Contacts:</h2>
+  <div class="search-container">
+    <form>
+      <input type="text" name="search" (keyup.enter)="searchContacts()" (keyup)="deactivateSearch()"[(ngModel)]="searchTerm" placeholder="Search Contacts...">
+      <button id="search_button" (click)="searchContacts()">Search</button>
+    </form>
+  </div>
 </div>
 <div class="contact-container">
   <div class="card" *ngFor="let contact of contacts">

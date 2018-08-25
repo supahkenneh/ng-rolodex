@@ -2,11 +2,22 @@ $subFont: 'Monda', Sans-Serif;
 
 .secondary-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 20px;
   h2 {
     margin: 0;
     font-size: 30px;
+  }
+  .search-container {
+    input{
+      width: 300px;
+      padding: 5px;
+      font-size: 16px;
+      font-family: $subFont;
+    }
+    button {
+      height: 40px;
+    }
   }
 }
 

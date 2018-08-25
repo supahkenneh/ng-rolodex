@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class ContactsComponent implements OnInit {
   contacts: any;
   isLoggedIn: boolean;
+  searchTerm: string;
 
   constructor(
     private backend: BackendService,
@@ -26,10 +27,6 @@ export class ContactsComponent implements OnInit {
       })
   }
 
-  // goToContact(id) {
-  //   this.backend.getOneContact(id)
-  // }
-
   deleteContact(id) {
     return this.backend.deleteContact(id)
       .then(() => {
@@ -37,5 +34,21 @@ export class ContactsComponent implements OnInit {
           return contact.id !== id
         })
       })
+  }
+
+  deactivateSearch() {
+    if (this.searchTerm.length < 1) {
+      return this.backend.getContacts()
+      .then(contacts => {
+        this.contacts = contacts;
+      })
+    }
+  }
+
+  searchContacts() {
+    return this.backend.searchContacts(this.searchTerm)
+    .then(result => {
+      return this.contacts = result;
+    })
   }
 }

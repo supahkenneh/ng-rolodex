@@ -1,7 +1,7 @@
 <!-- Will display if user tries to access page without logging in -->
 <div class="error" *ngIf="!this.loggedIn">
   <p>
-    Please <a href="http://localhost:4200/login">log in</a> to view your profile
+    Please <a routerLink="/">log in</a> to view your profile
   </p>
 </div>
 <!-- Happy path -->

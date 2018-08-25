@@ -10,11 +10,16 @@
   <h2 (onload)="showContacts()">Your Contacts:</h2>
   <div class="search-container">
     <form>
-      <input type="text" name="search" (keyup.enter)="searchContacts()" (keyup)="deactivateSearch()"[(ngModel)]="searchTerm" placeholder="Search Contacts...">
+      <input type="text" name="search" (keyup.enter)="searchContacts()" (keyup)="deactivateSearch()" (keyup)="resetSearch()" [(ngModel)]="searchTerm" placeholder="Search Contacts...">
       <button id="search_button" (click)="searchContacts()">Search</button>
     </form>
   </div>
 </div>
+<!-- Search error appear here -->
+<div class="error" *ngIf="this.searchError">
+  <p>{{searchMessage}}</p>
+</div>
+<!-- All contacts shown here in alpha order -->
 <div class="contact-container">
   <div class="card" *ngFor="let contact of contacts">
     <div class="name-container">

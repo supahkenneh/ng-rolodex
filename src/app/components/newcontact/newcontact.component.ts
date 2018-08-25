@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./newcontact.component.scss']
 })
 export class NewContactComponent {
+  isLoggedIn: boolean = false;
   formData: {
     name: string,
     address: string,
@@ -35,8 +36,11 @@ export class NewContactComponent {
 
   constructor(
     private backend: BackendService,
-    private router: Router 
-  ) { }
+    private router: Router,
+    private session: SessionService
+  ) {
+    this.isLoggedIn = this.session.isLoggedIn();
+  }
 
   validateName() {
     this.nameErrors.length = 0;

@@ -17,7 +17,7 @@ export class SessionService {
     let userString = window.localStorage.getItem('user');
     try {
       if (userString) { this.user = JSON.parse(userString); }
-      else { console.log('user was not found'); }
+      else { console.log('(╯°□°）╯︵ ┻━┻'); }
     }
     catch (err) {
       console.log('could not parse user');

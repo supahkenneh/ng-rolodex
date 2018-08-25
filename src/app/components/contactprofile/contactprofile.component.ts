@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BackendService } from '../../services/backend.service';
 
 @Component({
@@ -41,7 +41,6 @@ export class ContactProfileComponent implements OnInit {
   constructor(
     private session: SessionService,
     private backend: BackendService,
-    private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
     this.user = this.session.getSession();

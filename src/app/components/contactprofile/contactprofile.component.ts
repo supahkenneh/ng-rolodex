@@ -51,7 +51,9 @@ export class ContactProfileComponent implements OnInit {
     this.contactId = this.activatedRoute.snapshot.paramMap.get('id');
     return this.backend.getOneContact(this.contactId)
     .then(contact => {
-      return this.contact = contact[0];
+      console.log('contact :', contact);
+      this.contact = contact[0];
+      this.editFormData = contact[0];
     })
   }
 

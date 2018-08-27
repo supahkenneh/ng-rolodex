@@ -36,7 +36,9 @@ export class ProfileComponent implements OnInit {
     if (this.user) {
       this.backend.getProfile()
         .then(result => {
-          this.userProfile = result;
+          console.log('result :', result);
+          this.userProfile = result[0];
+          this.editFormData = result[0];
         })
     }
   }

@@ -8,12 +8,12 @@ router.get('/profile', (req, res) => {
     .query({ where: { username } })
     .fetch(['username', 'name', 'email', 'address'])
     .then(user => {
-      let profileUser = {
+      let profileUser = [{
         username: user.attributes.username,
         name: user.attributes.name,
         email: user.attributes.email,
         address: user.attributes.address
-      }
+      }]
       return res.json(profileUser);
     })
     .catch(err => console.log(err))
